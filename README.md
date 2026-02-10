@@ -30,14 +30,21 @@ headhunter-data-pipeline/
 │   ├── counter.sh                     # Statistical aggregation script
 │   └── hh_unique_positions.csv        # Position distribution summary
 │
-└── 6_partitioning/
-    ├── partitioner.sh                 # Date-based data partitioning
-    ├── concatenator.sh                # Partition merging script
-    ├── parts/                         # Date-partitioned CSV files
-    │   ├── 2025-12-02.csv
-    │   ├── 2025-12-03.csv
-    │   └── ...
-    └── concat_positions.csv           # Reconstructed complete dataset
+├── 6_partitioning/
+|    ├── partitioner.sh                 # Date-based data partitioning
+|    ├── concatenator.sh                # Partition merging script
+|    ├── parts/                         # Date-partitioned CSV files
+|    │   ├── 2025-12-02.csv
+|    │   ├── 2025-12-03.csv
+|    │   └── ...
+|    └── concat_positions.csv           # Reconstructed complete dataset
+|
+├── 7_docs/
+|   ├── 1_stdout_positions.png
+|   └── ...
+|
+├── README.md
+└── .gitignore
 ```
 
 ---
@@ -115,6 +122,8 @@ chmod +x hh.sh
 ```
 
 **Output:** `hh.json` – Raw vacancy data (20 most recent matches)
+![stdout positions](src/7_docs/1_stdout_positions.png)
+![stdout positions](src/7_docs/1_stdout_positions_json.png)
 
 ### Step 2: Format Conversion
 
@@ -127,24 +136,28 @@ chmod +x json_to_csv.sh
 ```
 
 **Output:** `hh.csv` – Structured data with 5 key columns
+![stdout positions](./src/7_docs/2_stdout_csv.png)
 
 ### Step 3: Data Sorting
 
 Sort vacancies chronologically with deterministic ordering:
 
 ```bash
-cd ../ex02-data-sorting/
+cd ../3_data-sorting/
+chmod +x sorter.sh
 ./sorter.sh
 ```
 
 **Output:** `hh_sorted.csv` – Ordered by creation time, then by ID
+![stdout positions](./src/7_docs/3_stdout_sorted_csv.png)
 
 ### Step 4: Feature Extraction
 
 Extract seniority levels from job titles:
 
 ```bash
-cd ../ex03-feature-extraction/
+cd ../4_feature-extraction/
+chmod +x cleaner.sh
 ./cleaner.sh
 ```
 
@@ -155,7 +168,8 @@ cd ../ex03-feature-extraction/
 Count and rank position types by frequency:
 
 ```bash
-cd ../ex04-analytics/
+cd ../5_analytics/
+chmod +x counter.sh
 ./counter.sh
 ```
 
@@ -166,7 +180,9 @@ cd ../ex04-analytics/
 Split data by date and demonstrate reconstruction:
 
 ```bash
-cd ../ex05-partitioning/
+cd ../6_partitioning/
+chmod +x partitioner.sh
+chmod +x concatenator.sh
 ./partitioner.sh        # Creates date-based partitions
 ./concatenator.sh       # Merges partitions back together
 ```
