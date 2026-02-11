@@ -149,7 +149,7 @@ chmod +x sorter.sh
 ```
 
 **Output:** `hh_sorted.csv` – Ordered by creation time, then by ID
-![stdout positions](./src/7_docs/3_stdout_sorted_csv.png)
+![stdout sorted by creation time](./src/7_docs/3_stdout_sorted_csv.png)
 
 ### Step 4: Feature Extraction
 
@@ -175,6 +175,7 @@ chmod +x counter.sh
 ```
 
 **Output:** `hh_unique_positions.csv` – Statistical summary of position distribution
+![stdout unique positions](./src/7_docs/5_stdout_count_unique.png)
 
 ### Step 6: Data Partitioning
 
@@ -191,15 +192,16 @@ chmod +x concatenator.sh
 **Outputs:** 
 - `parts/*.csv` – Individual files for each date
 - `concat_positions.csv` – Reconstructed complete dataset
-
+![stdout unique positions](./src/7_docs/6_stdout_partitioner.png)
+![stdout unique positions](./src/7_docs/6_stdout_concatinator.png)
 ---
 
-## 💡 Key Features
+## Key Features
 
-### 🔄 Modular Pipeline Architecture
+### Modular Pipeline Architecture
 Each stage is independent and produces intermediate outputs, allowing for easy debugging, monitoring, and modification. The pipeline follows the UNIX philosophy of composable tools.
 
-### 🧹 Intelligent Data Cleaning
+### Intelligent Data Cleaning
 The feature extraction stage uses sophisticated text parsing to identify seniority levels in job titles, handling edge cases like multiple levels ("Middle/Senior") and missing indicators.
 
 ### 📈 Built-in Analytics
@@ -209,7 +211,7 @@ Automated aggregation and ranking of position types provides immediate insights 
 Date-based partitioning enables quick access to specific time periods and supports efficient data retention policies. The concatenator proves the reversibility of partitioning operations.
 
 ### ⚡ Performance Optimised
-Single-pass processing where possible, efficient field delimiters, and minimal I/O operations ensure fast execution even with larger datasets.
+Single-pass processing where possible, efficient field delimiters, and minimal I/O (Input/Output) operations ensure fast execution even with larger datasets.
 
 ### 🛡️ Error Handling
 Each script includes validation checks for input parameters, file existence, and API responses, ensuring graceful failure with informative error messages.
@@ -275,21 +277,6 @@ Each script includes validation checks for input parameters, file existence, and
 
 ---
 
-## 📝 Example Output
-
-**Statistical Summary** (`hh_unique_positions.csv`):
-
-```csv
-"name","count"
-"Junior",8
-"Middle",5
-"Senior",4
-"Middle/Senior",2
-"-",1
-```
-
-**Cleaned Position Data** (`hh_positions.csv`):
-
 ```csv
 "id","created_at","name","has_test","alternate_url"
 "128429348","2025-12-03T14:30:22+0300","Junior",true,"https://hh.ru/vacancy/128429348"
@@ -314,7 +301,8 @@ Each script includes validation checks for input parameters, file existence, and
 **Data Quality:**
 - Add duplicate detection and removal
 - Implement data validation rules (e.g., date range checks)
-- Create data quality metrics dashboard
+- Create data quality metrics dashboard (use termgraph console based BI tool). For Instance,
+![stdout unique positions](./src/7_docs/7_terminal_based_graph.png)
 
 **Integration Options:**
 - Export to PostgreSQL or other databases
@@ -323,15 +311,6 @@ Each script includes validation checks for input parameters, file existence, and
 - Schedule automated daily pipeline runs with cron
 
 ---
-
-## 📄 Licence
-
-This project is available for portfolio and educational purposes.
-
----
-
-## 👤 Author
-
 Built as a demonstration of data engineering capabilities using UNIX command-line tools.
 
 **Skills Demonstrated:**
@@ -342,3 +321,7 @@ Built as a demonstration of data engineering capabilities using UNIX command-lin
 - Text Processing & Pattern Matching
 - Statistical Analysis
 - Data Partitioning Strategies
+---
+
+## 👨‍💻 Author
+Developed by: [Diyor Isamukhamedov](https://github.com/diyorIsamukhamedov/)
