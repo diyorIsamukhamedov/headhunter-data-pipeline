@@ -162,6 +162,7 @@ chmod +x cleaner.sh
 ```
 
 **Output:** `hh_positions.csv` – Dataset with extracted position levels
+![stdout positions](./src/7_docs/4_stdout_posotions_csv.png)
 
 ### Step 5: Generate Statistics
 
