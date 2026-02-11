@@ -274,16 +274,6 @@ Each script includes validation checks for input parameters, file existence, and
 - Reduced manual data collection time from hours to seconds
 - Automated data cleaning eliminates human error
 - Reproducible results through version-controlled scripts
-
----
-
-```csv
-"id","created_at","name","has_test","alternate_url"
-"128429348","2025-12-03T14:30:22+0300","Junior",true,"https://hh.ru/vacancy/128429348"
-"128430192","2025-12-03T15:12:08+0300","Senior",false,"https://hh.ru/vacancy/128430192"
-"128431056","2025-12-03T16:45:33+0300","Middle/Senior",true,"https://hh.ru/vacancy/128431056"
-```
-
 ---
 
 ## 🔄 Potential Enhancements
