@@ -1,3 +1,20 @@
+> ## ⚠️ Important Notice (May 2026)
+>
+> HeadHunter has introduced anti-scraping blockers on their public API.
+> Anonymous requests to `https://api.hh.ru/vacancies` are now restricted:
+>
+> - Template/placeholder `User-Agent` headers are blacklisted → `403 {"type":"bad_user_agent"}`
+> - Even with a valid `User-Agent`, unauthenticated requests may be rejected → `403 {"type":"forbidden"}`
+>
+> **Reliable access now requires OAuth authentication.** Register an app at
+> [dev.hh.ru](https://dev.hh.ru) to obtain a token and pass it via the
+> `Authorization: Bearer <token>` header.
+>
+> The data collection stage (`hh.sh`) may therefore fail without authorization.
+> A sample `hh.json` is kept in the repo so the remaining pipeline stages (2–6) remain reproducible.
+
+---
+
 # 📊 HeadHunter Job Market Data Pipeline
 
 A production-ready data engineering pipeline that collects, transforms, and analyses job vacancy data from the HeadHunter API using UNIX command-line tools. The system processes real-time job market data through six automated stages, producing clean datasets and analytical insights for data-driven recruitment decisions.

@@ -20,7 +20,7 @@ vacancy_count=20
 
 # Perform an HTTP GET request to the API
 # -f makes curl fail on HTTP erros (4xx, 5xx) 
-data_query=$(curl -f "$hh_url?text=$vacancy_name&per_page=$vacancy_count")
+data_query=$(curl -f -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36" "$hh_url?text=$vacancy_name&per_page=$vacancy_count")
 
 # Output file where the JSON response will be saved
 output_file="hh.json"
